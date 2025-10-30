@@ -18,7 +18,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AncientAdenaIcon, BlueStoneIcon, GreenStoneIcon, RedStoneIcon } from "@/components/icons"
 import { Separator } from "./ui/separator"
 import { motion } from "framer-motion"
-import { Server } from "lucide-react"
+import { X } from "lucide-react"
 
 const formSchema = z.object({
   redStones: z.coerce.number().int().min(0).optional(),
@@ -134,9 +134,9 @@ export function Calculator() {
                         control={form.control}
                         name="serverRates"
                         render={({ field }) => (
-                            <FormItem className="flex-1">
+                            <FormItem className="w-1/3">
                             <FormLabel className="flex items-center gap-2 text-muted-foreground text-sm">
-                                <Server className="h-4 w-4" />
+                                <X className="h-4 w-4" />
                                 Server Rates
                             </FormLabel>
                             <FormControl>
