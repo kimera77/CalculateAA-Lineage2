@@ -26,7 +26,7 @@ const formSchema = z.object({
 })
 
 export function Calculator() {
-  const [totalAdena, setTotalAdena] = useState<number | null>(null)
+  const [totalAdena, setTotalAdena] = useState(0)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -41,18 +41,12 @@ export function Calculator() {
 
   useEffect(() => {
     const { redStones, greenStones, blueStones } = watchedValues;
-    const isDirty = form.formState.isDirty || redStones > 0 || greenStones > 0 || blueStones > 0;
-
-    if (isDirty) {
-        const adena = (redStones * 10) + (greenStones * 5) + (blueStones * 3);
-        setTotalAdena(adena);
-    } else {
-        setTotalAdena(null);
-    }
-  }, [watchedValues, form.formState.isDirty]);
+    const adena = (redStones * 10) + (greenStones * 5) + (blueStones * 3);
+    setTotalAdena(adena);
+  }, [watchedValues]);
 
   return (
-    <Card className="w-full max-w-md bg-card/80 backdrop-blur-sm border-accent/20">
+    <Card className="w-full max-w-sm bg-card/80 backdrop-blur-sm border-accent/20">
       <CardHeader>
         <CardTitle className="text-2xl text-primary">Seal Stone Calculator</CardTitle>
         <CardDescription>Enter the amount of each Seal Stone you have.</CardDescription>
@@ -118,27 +112,23 @@ export function Calculator() {
         </Form>
       </CardContent>
 
-      <AnimatePresence>
-        {totalAdena !== null && totalAdena > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Separator className="my-4 bg-accent/20" />
-            <div className="p-6 pt-0 text-center">
-              <p className="text-muted-foreground text-sm">Total Ancient Adena Yield</p>
-              <div className="flex items-center justify-center gap-3 mt-2">
-                <AncientAdenaIcon className="h-8 w-8" />
-                <p className="text-4xl font-bold text-primary tracking-wider">
-                  {totalAdena.toLocaleString()}
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Separator className="my-4 bg-accent/20" />
+        <div className="p-6 pt-0 text-center">
+          <p className="text-muted-foreground text-sm">Total Ancient Adena Yield</p>
+          <div className="flex items-center justify-center gap-3 mt-2">
+            <AncientAdenaIcon className="h-8 w-8" />
+            <p className="text-4xl font-bold text-primary tracking-wider">
+              {totalAdena.toLocaleString()}
+            </p>
+          </div>
+        </div>
+      </motion.div>
     </Card>
   )
 }

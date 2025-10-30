@@ -18,7 +18,7 @@ export default async function Home() {
   }
 
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center p-4 overflow-hidden">
+    <main className="relative flex min-h-screen flex-col items-center justify-start pt-20 p-4 overflow-hidden">
       <div className="fixed inset-0">
         <Image
           src={imageUrl}
