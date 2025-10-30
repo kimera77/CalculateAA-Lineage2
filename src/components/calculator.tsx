@@ -134,8 +134,8 @@ export function Calculator() {
                         control={form.control}
                         name="serverRates"
                         render={({ field }) => (
-                            <FormItem className="w-1/3">
-                            <FormLabel className="flex items-center gap-2 text-muted-foreground text-sm">
+                            <FormItem className="w-[110px]">
+                            <FormLabel className="flex items-center gap-2 text-muted-foreground text-sm whitespace-nowrap">
                                 <X className="h-4 w-4" />
                                 Server Rates
                             </FormLabel>
