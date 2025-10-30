@@ -68,7 +68,7 @@ export function Calculator() {
                     <span className="text-sm text-muted-foreground font-normal">10 AA</span>
                   </FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="0" {...field} className="text-base" onChange={(e) => field.onChange(e.target.value === '' ? 0 : Number(e.target.value))} />
+                    <Input type="number" placeholder="0" {...field} className="text-base" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -86,7 +86,7 @@ export function Calculator() {
                     <span className="text-sm text-muted-foreground font-normal">5 AA</span>
                   </FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="0" {...field} className="text-base" onChange={(e) => field.onChange(e.target.value === '' ? 0 : Number(e.target.value))} />
+                    <Input type="number" placeholder="0" {...field} className="text-base" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -104,7 +104,7 @@ export function Calculator() {
                     <span className="text-sm text-muted-foreground font-normal">3 AA</span>
                   </FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="0" {...field} className="text-base" onChange={(e) => field.onChange(e.target.value === '' ? 0 : Number(e.target.value))} />
+                    <Input type="number" placeholder="0" {...field} className="text-base" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -138,8 +138,7 @@ export function Calculator() {
                                 type="number" 
                                 placeholder="1" 
                                 {...field} 
-                                className="text-base" 
-                                onChange={(e) => field.onChange(e.target.value === '' ? 1 : Number(e.target.value))}
+                                className="text-base"
                             />
                         </FormControl>
                         </FormItem>
