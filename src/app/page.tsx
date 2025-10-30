@@ -8,10 +8,10 @@ export default async function Home() {
   let imageHint = placeholderData.placeholderImages[0]?.imageHint || 'lineage2 landscape';
 
   try {
-    const response = await generateLineage2Image({ query: 'Lineage 2 Gracia Final Interlude wallpaper nostalgia' });
+    const response = await generateLineage2Image({ query: 'Lineage 2 catacombs wallpaper nostalgia' });
     if (response.imageUrl) {
       imageUrl = response.imageUrl;
-      imageHint = 'Lineage 2';
+      imageHint = 'Lineage 2 catacombs';
     }
   } catch (error) {
     // Failed to generate AI image, using fallback.
@@ -32,8 +32,8 @@ export default async function Home() {
         <div className="absolute inset-0 bg-background/80" />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center text-center space-y-8">
-        <div className="flex flex-col items-center space-y-2">
+      <div className="relative z-10 flex flex-col items-center text-center space-y-4">
+        <div className="flex flex-col items-center">
             <h1 className="text-4xl md:text-6xl font-headline font-bold text-primary tracking-wider" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>
                 CALCULATE AA
             </h1>
