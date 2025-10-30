@@ -24,19 +24,6 @@ export async function generateLineage2Image(input: GenerateLineage2ImageInput): 
   return generateLineage2ImageFlow(input);
 }
 
-const prompt = ai.definePrompt({
-  name: 'generateLineage2ImagePrompt',
-  input: {schema: GenerateLineage2ImageInputSchema},
-  output: {schema: GenerateLineage2ImageOutputSchema},
-  prompt: `You are an AI assistant specialized in searching for relevant Lineage 2 images (Gracia Final/Interlude era), specifically from the catacombs.
-
-  Given the user's query, search for an image of the catacombs that enhances the nostalgia and visual appeal of the calculator page.
-  Return the URL of the selected image. The image should be dark and atmospheric.
-
-  Query: {{{query}}}
-  `,
-});
-
 const generateLineage2ImageFlow = ai.defineFlow(
   {
     name: 'generateLineage2ImageFlow',
@@ -44,10 +31,10 @@ const generateLineage2ImageFlow = ai.defineFlow(
     outputSchema: GenerateLineage2ImageOutputSchema,
   },
   async input => {
-    // This flow is currently not in use, but kept for potential future use.
+    // This flow is not currently in use, but kept for potential future use.
     // It is superseded by a static image defined in `src/lib/placeholder-images.json`.
     return {
-      imageUrl: 'https://images.unsplash.com/photo-1549887552-cb1082d5e347?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      imageUrl: 'https://picsum.photos/seed/l2catacombs/1920/1080'
     };
   }
 );
