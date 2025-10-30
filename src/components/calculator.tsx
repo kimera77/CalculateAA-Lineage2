@@ -21,9 +21,9 @@ import { motion } from "framer-motion"
 import { Server } from "lucide-react"
 
 const formSchema = z.object({
-  redStones: z.coerce.number().int().min(0).default(0),
-  greenStones: z.coerce.number().int().min(0).default(0),
-  blueStones: z.coerce.number().int().min(0).default(0),
+  redStones: z.coerce.number().int().min(0).optional(),
+  greenStones: z.coerce.number().int().min(0).optional(),
+  blueStones: z.coerce.number().int().min(0).optional(),
   serverRates: z.coerce.number().min(0).default(1),
 })
 
@@ -33,9 +33,6 @@ export function Calculator() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      redStones: 0,
-      greenStones: 0,
-      blueStones: 0,
       serverRates: 1,
     },
   })
@@ -44,7 +41,7 @@ export function Calculator() {
 
   useEffect(() => {
     const { redStones, greenStones, blueStones, serverRates } = watchedValues;
-    const adena = ((redStones * 10) + (greenStones * 5) + (blueStones * 3)) * (serverRates || 1);
+    const adena = (( (redStones || 0) * 10) + ((greenStones || 0) * 5) + ((blueStones || 0) * 3)) * (serverRates || 1);
     setTotalAdena(adena);
   }, [watchedValues]);
 
@@ -68,7 +65,7 @@ export function Calculator() {
                     <span className="text-sm text-muted-foreground font-normal">10 AA</span>
                   </FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="0" {...field} className="text-base" />
+                    <Input type="number" placeholder="0" {...field} className="text-base" value={field.value ?? ''} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -86,7 +83,7 @@ export function Calculator() {
                     <span className="text-sm text-muted-foreground font-normal">5 AA</span>
                   </FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="0" {...field} className="text-base" />
+                    <Input type="number" placeholder="0" {...field} className="text-base" value={field.value ?? ''} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -104,7 +101,7 @@ export function Calculator() {
                     <span className="text-sm text-muted-foreground font-normal">3 AA</span>
                   </FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="0" {...field} className="text-base" />
+                    <Input type="number" placeholder="0" {...field} className="text-base" value={field.value ?? ''} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
