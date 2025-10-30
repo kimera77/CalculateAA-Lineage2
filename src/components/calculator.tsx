@@ -1,11 +1,10 @@
 
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
@@ -15,7 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { AncientAdenaIcon, BlueStoneIcon, GreenStoneIcon, RedStoneIcon } from "@/components/icons"
 import { Separator } from "./ui/separator"
 import { motion, AnimatePresence } from "framer-motion"
@@ -38,10 +37,17 @@ export function Calculator() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    const adena = (values.redStones * 10) + (values.greenStones * 5) + (values.blueStones * 3)
-    setTotalAdena(adena)
-  }
+  const watchedValues = form.watch();
+
+  useEffect(() => {
+    const { redStones, greenStones, blueStones } = watchedValues;
+    if (form.formState.isDirty) {
+        const adena = (redStones * 10) + (greenStones * 5) + (blueStones * 3);
+        setTotalAdena(adena);
+    } else {
+        setTotalAdena(null);
+    }
+  }, [watchedValues, form.formState.isDirty]);
 
   return (
     <Card className="w-full max-w-md bg-card/80 backdrop-blur-sm border-accent/20">
@@ -51,7 +57,7 @@ export function Calculator() {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form className="space-y-6">
             <FormField
               control={form.control}
               name="redStones"
@@ -97,9 +103,6 @@ export function Calculator() {
                 </FormItem>
               )}
             />
-             <CardFooter className="flex-col items-stretch p-0 pt-6">
-                <Button type="submit" className="w-full text-lg py-6">Calculate</Button>
-            </CardFooter>
           </form>
         </Form>
       </CardContent>
