@@ -14,11 +14,11 @@ export default async function Home() {
       imageHint = 'Lineage 2';
     }
   } catch (error) {
-    console.error("Failed to generate AI image, using fallback.", error);
+    // Failed to generate AI image, using fallback.
   }
 
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-start pt-20 p-4 overflow-hidden">
+    <main className="relative flex min-h-screen flex-col items-center justify-start pt-8 p-4 overflow-hidden">
       <div className="fixed inset-0">
         <Image
           src={imageUrl}
