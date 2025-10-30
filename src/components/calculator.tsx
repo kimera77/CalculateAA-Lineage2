@@ -56,7 +56,7 @@ export function Calculator() {
       <CardContent>
         <div className="flex flex-col md:flex-row gap-8">
             <Form {...form}>
-              <form className="space-y-6 md:w-1/2">
+              <form className="space-y-6 md:w-2/5">
                 <FormField
                   control={form.control}
                   name="redStones"
