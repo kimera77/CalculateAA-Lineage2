@@ -14,10 +14,10 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AncientAdenaIcon, BlueStoneIcon, GreenStoneIcon, RedStoneIcon } from "@/components/icons"
 import { Separator } from "./ui/separator"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 
 const formSchema = z.object({
   redStones: z.coerce.number().int().min(0).default(0),
@@ -49,7 +49,6 @@ export function Calculator() {
     <Card className="w-full max-w-sm bg-card/80 backdrop-blur-sm border-accent/20">
       <CardHeader>
         <CardTitle className="text-2xl text-primary">Seal Stone Calculator</CardTitle>
-        <CardDescription>Enter the amount of each Seal Stone you have.</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
