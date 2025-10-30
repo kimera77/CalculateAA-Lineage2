@@ -29,10 +29,10 @@ const prompt = ai.definePrompt({
   name: 'generateLineage2ImagePrompt',
   input: {schema: GenerateLineage2ImageInputSchema},
   output: {schema: GenerateLineage2ImageOutputSchema},
-  prompt: `You are an AI assistant specialized in searching for relevant Lineage 2 images (Gracia Final/Interlude era).
+  prompt: `You are an AI assistant specialized in searching for relevant Lineage 2 images (Gracia Final/Interlude era), specifically from the catacombs.
 
-  Given the user's query, search for an image that enhances the nostalgia and visual appeal of the calculator page.
-  Return the URL of the selected image.
+  Given the user's query, search for an image of the catacombs that enhances the nostalgia and visual appeal of the calculator page.
+  Return the URL of the selected image. The image should be dark and atmospheric.
 
   Query: {{{query}}}
   `,
