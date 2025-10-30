@@ -18,11 +18,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AncientAdenaIcon, BlueStoneIcon, GreenStoneIcon, RedStoneIcon } from "@/components/icons"
 import { Separator } from "./ui/separator"
 import { motion } from "framer-motion"
+import { Server } from "lucide-react"
 
 const formSchema = z.object({
   redStones: z.coerce.number().int().min(0).default(0),
   greenStones: z.coerce.number().int().min(0).default(0),
   blueStones: z.coerce.number().int().min(0).default(0),
+  serverRates: z.coerce.number().min(0).default(1),
 })
 
 export function Calculator() {
@@ -34,14 +36,15 @@ export function Calculator() {
       redStones: 0,
       greenStones: 0,
       blueStones: 0,
+      serverRates: 1,
     },
   })
 
   const watchedValues = form.watch();
 
   useEffect(() => {
-    const { redStones, greenStones, blueStones } = watchedValues;
-    const adena = (redStones * 10) + (greenStones * 5) + (blueStones * 3);
+    const { redStones, greenStones, blueStones, serverRates } = watchedValues;
+    const adena = ((redStones * 10) + (greenStones * 5) + (blueStones * 3)) * (serverRates || 1);
     setTotalAdena(adena);
   }, [watchedValues]);
 
@@ -118,14 +121,41 @@ export function Calculator() {
         transition={{ duration: 0.5 }}
       >
         <Separator className="my-4 bg-accent/20" />
-        <div className="p-6 pt-0 text-center">
-          <p className="text-muted-foreground text-sm">Total Ancient Adena Yield</p>
-          <div className="flex items-center justify-center gap-3 mt-2">
-            <AncientAdenaIcon className="h-8 w-8" />
-            <p className="text-4xl font-bold text-primary tracking-wider">
-              {totalAdena.toLocaleString()}
-            </p>
-          </div>
+        <div className="p-6 pt-0 flex items-end justify-between space-x-4">
+            <div className="flex-1">
+                <Form {...form}>
+                    <FormField
+                    control={form.control}
+                    name="serverRates"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormLabel className="flex items-center gap-2 text-muted-foreground text-sm">
+                            <Server className="h-4 w-4" />
+                            Server Rates
+                        </FormLabel>
+                        <FormControl>
+                            <Input 
+                                type="number" 
+                                placeholder="1" 
+                                {...field} 
+                                className="text-base" 
+                                onChange={(e) => field.onChange(e.target.value === '' ? 1 : Number(e.target.value))}
+                            />
+                        </FormControl>
+                        </FormItem>
+                    )}
+                    />
+                </Form>
+            </div>
+            <div className="text-right">
+                <p className="text-muted-foreground text-sm">Total Ancient Adena Yield</p>
+                <div className="flex items-center justify-end gap-3 mt-2">
+                    <AncientAdenaIcon className="h-8 w-8" />
+                    <p className="text-4xl font-bold text-primary tracking-wider">
+                    {totalAdena.toLocaleString()}
+                    </p>
+                </div>
+            </div>
         </div>
       </motion.div>
     </Card>
