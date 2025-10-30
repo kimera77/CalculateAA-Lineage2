@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import { Calculator } from '@/components/calculator';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export default function Home() {
-  const imageUrl = 'https://images.squarespace-cdn.com/content/v1/51b3dc8ee4b051b96ceb10de/1588613149725-S5N22033100A39O5F57C/image-asset.jpeg';
-  const imageHint = 'Lineage 2 catacombs';
+  const bgImage = PlaceHolderImages.find((img) => img.id === 'l2-bg');
+  const imageUrl = bgImage?.imageUrl ?? 'https://picsum.photos/seed/1/1920/1080';
+  const imageHint = bgImage?.imageHint ?? 'fantasy landscape';
 
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-start pt-8 p-4 overflow-hidden">
@@ -15,7 +17,6 @@ export default function Home() {
           className="object-cover"
           data-ai-hint={imageHint}
           priority
-          unoptimized
         />
         <div className="absolute inset-0 bg-background/80" />
       </div>

@@ -1,4 +1,3 @@
-// src/ai/flows/generate-lineage2-image.ts
 'use server';
 /**
  * @fileOverview An image generation AI agent that searches for relevant Lineage 2 images.
@@ -45,7 +44,10 @@ const generateLineage2ImageFlow = ai.defineFlow(
     outputSchema: GenerateLineage2ImageOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
-    return output!;
+    // This flow is currently not in use, but kept for potential future use.
+    // It is superseded by a static image defined in `src/lib/placeholder-images.json`.
+    return {
+      imageUrl: 'https://images.unsplash.com/photo-1549887552-cb1082d5e347?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    };
   }
 );
