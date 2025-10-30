@@ -122,7 +122,7 @@ export function Calculator() {
       >
         <Separator className="my-4 bg-accent/20" />
         <div className="p-6 pt-0 flex items-end justify-between space-x-4">
-            <div className="flex-1">
+            <div className="flex-none w-28">
                 <Form {...form}>
                     <FormField
                     control={form.control}
@@ -147,7 +147,7 @@ export function Calculator() {
                     />
                 </Form>
             </div>
-            <div className="text-right">
+            <div className="flex-1 text-right">
                 <p className="text-muted-foreground text-sm">Total Ancient Adena Yield</p>
                 <div className="flex items-center justify-end gap-3 mt-2">
                     <AncientAdenaIcon className="h-8 w-8" />
