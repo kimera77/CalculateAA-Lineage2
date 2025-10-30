@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: 'CALCULATE AA',
-  description: 'Calculate your Ancient Adena from Seal Stones in Lineage 2.',
+  description: 'Ancient Adena Calculator for Lineage 2.',
 };
 
 export default function RootLayout({
