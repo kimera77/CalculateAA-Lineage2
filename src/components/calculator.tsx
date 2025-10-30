@@ -49,142 +49,150 @@ export function Calculator() {
   }, [watchedValues]);
 
   return (
-    <Card className="w-full max-w-sm bg-card/80 backdrop-blur-sm border-accent/20">
+    <Card className="w-full max-w-2xl bg-card/80 backdrop-blur-sm border-accent/20">
       <CardHeader>
         <CardTitle className="text-2xl text-primary">Seal Stone Calculator</CardTitle>
       </CardHeader>
       <CardContent>
-        <Form {...form}>
-          <form className="space-y-6">
-            <FormField
-              control={form.control}
-              name="redStones"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center justify-between text-lg">
-                    <div className="flex items-center gap-2">
-                      <RedStoneIcon className="h-6 w-6" /> Red Seal Stones
-                    </div>
-                    <span className="text-sm text-muted-foreground font-normal">10 AA</span>
-                  </FormLabel>
-                  <FormControl>
-                    <Input type="number" placeholder="0" {...field} className="text-base" value={field.value ?? ''} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="greenStones"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center justify-between text-lg">
-                     <div className="flex items-center gap-2">
-                      <GreenStoneIcon className="h-6 w-6" /> Green Seal Stones
-                    </div>
-                    <span className="text-sm text-muted-foreground font-normal">5 AA</span>
-                  </FormLabel>
-                  <FormControl>
-                    <Input type="number" placeholder="0" {...field} className="text-base" value={field.value ?? ''} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="blueStones"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center justify-between text-lg">
-                    <div className="flex items-center gap-2">
-                      <BlueStoneIcon className="h-6 w-6" /> Blue Seal Stones
-                    </div>
-                    <span className="text-sm text-muted-foreground font-normal">3 AA</span>
-                  </FormLabel>
-                  <FormControl>
-                    <Input type="number" placeholder="0" {...field} className="text-base" value={field.value ?? ''} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </form>
-        </Form>
-      </CardContent>
+        <div className="flex flex-col md:flex-row gap-8">
+            <Form {...form}>
+              <form className="space-y-6 md:w-1/2">
+                <FormField
+                  control={form.control}
+                  name="redStones"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex items-center justify-between text-lg">
+                        <div className="flex items-center gap-2">
+                          <RedStoneIcon className="h-6 w-6" /> Red Seal Stones
+                        </div>
+                        <span className="text-sm text-muted-foreground font-normal">10 AA</span>
+                      </FormLabel>
+                      <FormControl>
+                        <Input type="number" placeholder="0" {...field} className="text-base" value={field.value ?? ''} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="greenStones"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex items-center justify-between text-lg">
+                         <div className="flex items-center gap-2">
+                          <GreenStoneIcon className="h-6 w-6" /> Green Seal Stones
+                        </div>
+                        <span className="text-sm text-muted-foreground font-normal">5 AA</span>
+                      </FormLabel>
+                      <FormControl>
+                        <Input type="number" placeholder="0" {...field} className="text-base" value={field.value ?? ''} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="blueStones"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="flex items-center justify-between text-lg">
+                        <div className="flex items-center gap-2">
+                          <BlueStoneIcon className="h-6 w-6" /> Blue Seal Stones
+                        </div>
+                        <span className="text-sm text-muted-foreground font-normal">3 AA</span>
+                      </FormLabel>
+                      <FormControl>
+                        <Input type="number" placeholder="0" {...field} className="text-base" value={field.value ?? ''} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </form>
+            </Form>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        transition={{ duration: 0.5 }}
-      >
-        <Separator className="my-4 bg-accent/20" />
-        <div className="p-6 pt-0 flex items-end justify-between space-x-4">
-            <div className="flex-none w-28 space-y-4">
-                <Form {...form}>
-                    <FormField
-                    control={form.control}
-                    name="serverRates"
-                    render={({ field }) => (
-                        <FormItem>
-                        <FormLabel className="flex items-center gap-2 text-muted-foreground text-sm">
-                            <Server className="h-4 w-4" />
-                            Server Rates
-                        </FormLabel>
-                        <FormControl>
-                            <Input 
-                                type="number" 
-                                placeholder="1" 
-                                {...field} 
-                                className="text-base"
-                            />
-                        </FormControl>
-                        </FormItem>
-                    )}
-                    />
-                    <FormField
-                    control={form.control}
-                    name="priceAA"
-                    render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-muted-foreground text-sm">Price AA</FormLabel>
-                          <FormControl>
-                              <Input 
-                                  type="number" 
-                                  placeholder="0" 
-                                  {...field} 
-                                  className="text-base"
-                                  value={field.value ?? ''}
-                              />
-                          </FormControl>
-                        </FormItem>
-                    )}
-                    />
-                </Form>
+            <div className="hidden md:block">
+              <Separator orientation="vertical" className="bg-accent/20 h-full" />
             </div>
-            <div className="flex-1 text-right space-y-2">
-                <div>
-                  <p className="text-muted-foreground text-sm">Total Ancient Adena Yield</p>
-                  <div className="flex items-center justify-end gap-3 mt-1">
-                      <AncientAdenaIcon className="h-8 w-8" />
-                      <p className="text-4xl font-bold text-primary tracking-wider">
-                      {totalAdena.toLocaleString()}
-                      </p>
-                  </div>
+            <div className="md:hidden">
+              <Separator orientation="horizontal" className="bg-accent/20 w-full" />
+            </div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="flex-1 space-y-6"
+            >
+                <div className="flex gap-4">
+                    <Form {...form}>
+                        <FormField
+                        control={form.control}
+                        name="serverRates"
+                        render={({ field }) => (
+                            <FormItem className="flex-1">
+                            <FormLabel className="flex items-center gap-2 text-muted-foreground text-sm">
+                                <Server className="h-4 w-4" />
+                                Server Rates
+                            </FormLabel>
+                            <FormControl>
+                                <Input 
+                                    type="number" 
+                                    placeholder="1" 
+                                    {...field} 
+                                    className="text-base"
+                                />
+                            </FormControl>
+                            </FormItem>
+                        )}
+                        />
+                        <FormField
+                        control={form.control}
+                        name="priceAA"
+                        render={({ field }) => (
+                            <FormItem className="flex-1">
+                              <FormLabel className="text-muted-foreground text-sm">Price AA</FormLabel>
+                              <FormControl>
+                                  <Input 
+                                      type="number" 
+                                      placeholder="0" 
+                                      {...field} 
+                                      className="text-base"
+                                      value={field.value ?? ''}
+                                  />
+                              </FormControl>
+                            </FormItem>
+                        )}
+                        />
+                    </Form>
                 </div>
-                {totalMarketAdena > 0 && (
-                  <div>
-                      <p className="text-muted-foreground text-sm">Total Adena</p>
-                      <p className="text-2xl font-bold text-green-400 tracking-wider">
-                        {totalMarketAdena.toLocaleString()}
-                      </p>
-                  </div>
-                )}
-            </div>
+                <Separator className="bg-accent/20" />
+                <div className="text-right space-y-4">
+                    <div>
+                      <p className="text-muted-foreground text-sm">Total Ancient Adena Yield</p>
+                      <div className="flex items-center justify-end gap-3 mt-1">
+                          <AncientAdenaIcon className="h-8 w-8" />
+                          <p className="text-4xl font-bold text-primary tracking-wider">
+                          {totalAdena.toLocaleString()}
+                          </p>
+                      </div>
+                    </div>
+                    {totalMarketAdena > 0 && (
+                      <div>
+                          <p className="text-muted-foreground text-sm">Total Adena</p>
+                          <p className="text-2xl font-bold text-green-400 tracking-wider">
+                            {totalMarketAdena.toLocaleString()}
+                          </p>
+                      </div>
+                    )}
+                </div>
+            </motion.div>
         </div>
-      </motion.div>
+      </CardContent>
     </Card>
   )
 }
