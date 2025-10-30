@@ -41,7 +41,9 @@ export function Calculator() {
 
   useEffect(() => {
     const { redStones, greenStones, blueStones } = watchedValues;
-    if (form.formState.isDirty) {
+    const isDirty = form.formState.isDirty || redStones > 0 || greenStones > 0 || blueStones > 0;
+
+    if (isDirty) {
         const adena = (redStones * 10) + (greenStones * 5) + (blueStones * 3);
         setTotalAdena(adena);
     } else {
@@ -63,11 +65,14 @@ export function Calculator() {
               name="redStones"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="flex items-center gap-2 text-lg">
-                    <RedStoneIcon className="h-6 w-6" /> Red Seal Stones
+                  <FormLabel className="flex items-center justify-between text-lg">
+                    <div className="flex items-center gap-2">
+                      <RedStoneIcon className="h-6 w-6" /> Red Seal Stones
+                    </div>
+                    <span className="text-sm text-muted-foreground font-normal">10 AA</span>
                   </FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="0" {...field} className="text-base" />
+                    <Input type="number" placeholder="0" {...field} className="text-base" onChange={(e) => field.onChange(e.target.value === '' ? 0 : Number(e.target.value))} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -78,11 +83,14 @@ export function Calculator() {
               name="greenStones"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="flex items-center gap-2 text-lg">
-                    <GreenStoneIcon className="h-6 w-6" /> Green Seal Stones
+                  <FormLabel className="flex items-center justify-between text-lg">
+                     <div className="flex items-center gap-2">
+                      <GreenStoneIcon className="h-6 w-6" /> Green Seal Stones
+                    </div>
+                    <span className="text-sm text-muted-foreground font-normal">5 AA</span>
                   </FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="0" {...field} className="text-base" />
+                    <Input type="number" placeholder="0" {...field} className="text-base" onChange={(e) => field.onChange(e.target.value === '' ? 0 : Number(e.target.value))} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -93,11 +101,14 @@ export function Calculator() {
               name="blueStones"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="flex items-center gap-2 text-lg">
-                    <BlueStoneIcon className="h-6 w-6" /> Blue Seal Stones
+                  <FormLabel className="flex items-center justify-between text-lg">
+                    <div className="flex items-center gap-2">
+                      <BlueStoneIcon className="h-6 w-6" /> Blue Seal Stones
+                    </div>
+                    <span className="text-sm text-muted-foreground font-normal">3 AA</span>
                   </FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="0" {...field} className="text-base" />
+                    <Input type="number" placeholder="0" {...field} className="text-base" onChange={(e) => field.onChange(e.target.value === '' ? 0 : Number(e.target.value))} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -108,7 +119,7 @@ export function Calculator() {
       </CardContent>
 
       <AnimatePresence>
-        {totalAdena !== null && (
+        {totalAdena !== null && totalAdena > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
