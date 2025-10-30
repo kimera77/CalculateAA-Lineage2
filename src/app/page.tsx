@@ -35,7 +35,7 @@ export default async function Home() {
       <div className="relative z-10 flex flex-col items-center text-center space-y-8">
         <div className="flex flex-col items-center space-y-2">
             <h1 className="text-4xl md:text-6xl font-headline font-bold text-primary tracking-wider" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>
-                AdenaCalc L2
+                calculateAA-Lineage2
             </h1>
             <p className="text-sm md:text-base text-foreground/80">Calculate your Ancient Adena yield from Seal Stones</p>
         </div>

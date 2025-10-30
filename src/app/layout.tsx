@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'AdenaCalc L2',
+  title: 'calculateAA-Lineage2',
   description: 'Calculate your Ancient Adena from Seal Stones in Lineage 2.',
 };
 
