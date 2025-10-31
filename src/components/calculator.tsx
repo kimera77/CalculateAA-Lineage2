@@ -56,7 +56,7 @@ export function Calculator() {
       <CardContent>
         <div className="flex flex-col md:flex-row gap-8">
             <Form {...form}>
-              <form className="space-y-6 md:w-2/5">
+              <form className="space-y-6 md:w-1/2">
                 <FormField
                   control={form.control}
                   name="redStones"
@@ -154,7 +154,7 @@ export function Calculator() {
                         control={form.control}
                         name="priceAA"
                         render={({ field }) => (
-                            <FormItem className="w-[120px]">
+                            <FormItem className="w-[100px]">
                               <FormLabel className="text-muted-foreground text-sm">Price AA</FormLabel>
                               <FormControl>
                                   <Input 
