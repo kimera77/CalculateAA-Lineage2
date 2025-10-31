@@ -154,7 +154,7 @@ export function Calculator() {
                         control={form.control}
                         name="priceAA"
                         render={({ field }) => (
-                            <FormItem className="flex-1">
+                            <FormItem className="w-[120px]">
                               <FormLabel className="text-muted-foreground text-sm">Price AA</FormLabel>
                               <FormControl>
                                   <Input 
