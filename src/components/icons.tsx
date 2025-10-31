@@ -33,21 +33,12 @@ export const BlueStoneIcon = (props: React.ComponentProps<typeof Image>) => (
   );
 
 
-export const AncientAdenaIcon = (props: SVGProps<SVGSVGElement>) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
-    {...props}
-    style={{ color: '#D4A773' }}
-  >
-    <circle cx="12" cy="12" r="10" />
-    <path d="M8 14h8" />
-    <path d="M12 8v8" />
-    <path d="M9 11h6" />
-  </svg>
-);
+  export const AncientAdenaIcon = (props: React.ComponentProps<typeof Image>) => (
+    <Image 
+      src="https://firebasestorage.googleapis.com/v0/b/studio-8346323804-9d6c0.firebasestorage.app/o/CalculateAA%2FAA.png?alt=media&token=680c3d2c-e097-4f23-9ea8-e5af34014c7f"
+      alt="Ancient Adena"
+      width={24}
+      height={24}
+      {...props}
+    />
+  );
