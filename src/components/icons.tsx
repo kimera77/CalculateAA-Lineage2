@@ -1,4 +1,5 @@
 import type { SVGProps } from "react";
+import Image from "next/image";
 
 const Gemstone = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -23,8 +24,14 @@ export const RedStoneIcon = (props: SVGProps<SVGSVGElement>) => (
   <Gemstone style={{ color: '#E53E3E' }} {...props} />
 );
 
-export const GreenStoneIcon = (props: SVGProps<SVGSVGElement>) => (
-  <Gemstone style={{ color: '#48BB78' }} {...props} />
+export const GreenStoneIcon = (props: React.ComponentProps<typeof Image>) => (
+  <Image 
+    src="https://firebasestorage.googleapis.com/v0/b/studio-8346323804-9d6c0.firebasestorage.app/o/CalculateAA%2Fverde.png?alt=media&token=ad732060-f536-4293-ae56-76ecd2499f64"
+    alt="Green Seal Stone"
+    width={24}
+    height={24}
+    {...props}
+  />
 );
 
 export const BlueStoneIcon = (props: SVGProps<SVGSVGElement>) => (
