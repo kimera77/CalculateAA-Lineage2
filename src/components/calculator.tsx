@@ -173,7 +173,7 @@ export function Calculator() {
                 <Separator className="bg-accent/20" />
                 <div className="text-right space-y-4">
                     <div>
-                      <p className="text-muted-foreground text-sm">Total Ancient Adena Yield</p>
+                      <p className="text-muted-foreground text-sm">Total Ancient Adena</p>
                       <div className="flex items-center justify-end gap-3 mt-1">
                           <AncientAdenaIcon className="h-8 w-8" />
                           <p className="text-4xl font-bold text-primary tracking-wider">
